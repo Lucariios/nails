@@ -192,6 +192,12 @@ nav ul li a:hover {
     border-color: #c5a47e;
 }
 
+.portfolio-button-container,
+.services-button-container {
+    text-align: center;
+    margin-top: 40px;
+}
+
 /* Contact Section */
 #contact {
     background-color: #f4f4f4;
@@ -213,6 +219,16 @@ nav ul li a:hover {
 .contact-info a:hover {
     color: #c5a47e;
     border-bottom-color: #c5a47e;
+}
+
+
+/* Map Container */
+.map-container {
+    margin-top: 60px;
+}
+
+.map-container iframe {
+    border: 1px solid #000;
 }
 
 /* Footer */
