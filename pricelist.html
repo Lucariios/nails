@@ -4,6 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Прайс-лист - Nail Studio by Alina Pitsyna</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Playfair+Display:wght@700&family=Raleway:wght@300;400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <style>
         /* Додаткові стилі для сторінки прайс-листа */
@@ -25,9 +28,38 @@
         .pricelist-item {
             display: flex;
             justify-content: space-between;
-            margin-bottom: 15px;
+            margin-bottom: 10px;
             font-size: 1.1em;
+            padding: 10px;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+            transition: border-color 0.3s;
+            border: 1px solid transparent;
         }
+
+        .pricelist-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(197, 164, 126, 0.2); /* Напівпрозорий золотий */
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.4s ease-in-out;
+            z-index: -1;
+        }
+
+        .pricelist-item:hover::before {
+            transform: scaleX(1);
+        }
+
+        .pricelist-item:hover {
+            border-color: #c5a47e;
+        }
+
         .pricelist-item .service-name {
             margin: 0;
         }
@@ -36,90 +68,177 @@
             white-space: nowrap;
             margin-left: 20px;
         }
+        .category-description {
+            font-style: italic;
+            color: #555;
+            margin-top: -15px;
+            margin-bottom: 20px;
+            font-size: 0.9em;
+        }
     </style>
 </head>
 <body>
 
     <header>
         <nav>
-            <div class="logo">
-                <a href="index.html">Nail Studio by Alina Pitsyna</a>
+            <div class="nav-links nav-left">
+                <ul>
+                    <li><a href="index.html#about">Про нас</a></li>
+                    <li><a href="index.html#services">Послуги</a></li>
+                </ul>
             </div>
-            <ul>
-                <li><a href="index.html#about">Про нас</a></li>
-                <li><a href="index.html#services">Послуги</a></li>
-                <li><a href="portfolio.html">Портфоліо</a></li>
-                <li><a href="index.html#contact">Контакти</a></li>
-            </ul>
+            <div class="logo-center">
+                <a href="index.html">AP</a>
+            </div>
+            <div class="nav-links nav-right">
+                <ul>
+                    <li><a href="portfolio.html">Портфоліо</a></li>
+                    <li><a href="index.html#contact">Контакти</a></li>
+                </ul>
+            </div>
         </nav>
     </header>
 
-    <main>
-        <section id="full-pricelist">
-            <h2>Прайс-лист</h2>
+<main>
+    <section id="full-pricelist">
+        <h2>Прайс-лист</h2>
 
-            <div class="pricelist-category">
-                <h3>Манікюр</h3>
-                <div class="pricelist-item">
-                    <p class="service-name">Класичний манікюр (без покриття)</p>
-                    <span class="service-price">400 грн</span>
-                </div>
-                <div class="pricelist-item">
-                    <p class="service-name">Апаратний / Комбінований манікюр (без покриття)</p>
-                    <span class="service-price">450 грн</span>
-                </div>
-                 <div class="pricelist-item">
-                    <p class="service-name">Чоловічий манікюр</p>
-                    <span class="service-price">500 грн</span>
-                </div>
+        <div class="pricelist-category">
+            <h3>Комплекс МАНІКЮР З ПОКРИТТЯМ</h3>
+            <p class="category-description">(В комплекс входить зняття, манікюр і однотонне покриття, укріплення за потреби). Дизайн +50-300грн.</p>
+            <div class="pricelist-item">
+                <p class="service-name">Комплекс</p>
+                <span class="service-price">750 грн</span>
             </div>
+        </div>
 
-            <div class="pricelist-category">
-                <h3>Педикюр</h3>
-                <div class="pricelist-item">
-                    <p class="service-name">Класичний педикюр (без покриття)</p>
-                    <span class="service-price">600 грн</span>
-                </div>
-                <div class="pricelist-item">
-                    <p class="service-name">Апаратний педикюр (стопа + пальчики)</p>
-                    <span class="service-price">700 грн</span>
-                </div>
-                <div class="pricelist-item">
-                    <p class="service-name">Експрес-педикюр (тільки пальчики)</p>
-                    <span class="service-price">500 грн</span>
-                </div>
+        <div class="pricelist-category">
+            <h3>ДОДАТКОВО</h3>
+            <div class="pricelist-item">
+                <p class="service-name">Зняття матеріалу + манікюр</p>
+                <span class="service-price">600 грн</span>
             </div>
-
-            <div class="pricelist-category">
-                <h3>Покриття та Дизайн</h3>
-                <div class="pricelist-item">
-                    <p class="service-name">Покриття гель-лаком (однотонне)</p>
-                    <span class="service-price">300 грн</span>
-                </div>
-                <div class="pricelist-item">
-                    <p class="service-name">Зняття гель-лаку</p>
-                    <span class="service-price">100 грн</span>
-                </div>
-                <div class="pricelist-item">
-                    <p class="service-name">Дизайн "френч" / "лунки"</p>
-                    <span class="service-price">100 грн</span>
-                </div>
-                <div class="pricelist-item">
-                    <p class="service-name">Художній розпис (1 ніготь)</p>
-                    <span class="service-price">від 50 грн</span>
-                </div>
-                 <div class="pricelist-item">
-                    <p class="service-name">Інкрустація стразами (1 ніготь)</p>
-                    <span class="service-price">від 70 грн</span>
-                </div>
+            <div class="pricelist-item">
+                <p class="service-name">Манікюр без покриття</p>
+                <span class="service-price">500 грн</span>
             </div>
+            <div class="pricelist-item">
+                <p class="service-name">Чоловічий манікюр</p>
+                <span class="service-price">600 грн</span>
+            </div>
+        </div>
 
-        </section>
-    </main>
+        <div class="pricelist-category">
+            <h3>Комплекс КОРЕКЦІЯ НАРОЩЕНИХ НІГТІВ*</h3>
+            <p class="category-description">(В комплекс входить зняття, манікюр, однотонне покриття, ремонт зламаних нігтів). Дизайн +50-300грн.</p>
+            <div class="pricelist-item">
+                <p class="service-name">S (1–2 довжина)</p>
+                <span class="service-price">850 грн</span>
+            </div>
+            <div class="pricelist-item">
+                <p class="service-name">M (3–4 довжина)</p>
+                <span class="service-price">950 грн</span>
+            </div>
+            <div class="pricelist-item">
+                <p class="service-name">L (5–6 довжина)</p>
+                <span class="service-price">1050 грн</span>
+            </div>
+        </div>
+
+        <div class="pricelist-category">
+            <h3>Комплекс НАРОЩУВАННЯ НІГТІВ*</h3>
+            <p class="category-description">(В комплекс входить зняття, манікюр, нарощування нігтів. Дизайн +50-300грн)</p>
+            <div class="pricelist-item">
+                <p class="service-name">S (1–2 довжина)</p>
+                <span class="service-price">1000 грн</span>
+            </div>
+            <div class="pricelist-item">
+                <p class="service-name">M (3–4 довжина)</p>
+                <span class="service-price">1100 грн</span>
+            </div>
+            <div class="pricelist-item">
+                <p class="service-name">L (5–6 довжина)</p>
+                <span class="service-price">1300 грн</span>
+            </div>
+        </div>
+
+        <div class="pricelist-category">
+            <h3>Педикюр</h3>
+            <div class="pricelist-item">
+                <p class="service-name">Педикюр (повна обробка)</p>
+                <span class="service-price">850 грн</span>
+            </div>
+            <div class="pricelist-item">
+                <p class="service-name">Педикюр (повна обробка) + покриття</p>
+                <span class="service-price">900 грн</span>
+            </div>
+            <div class="pricelist-item">
+                <p class="service-name">Експрес педикюр (тільки пальці)</p>
+                <span class="service-price">700 грн</span>
+            </div>
+            <div class="pricelist-item">
+                <p class="service-name">Експрес педикюр + покриття лаком</p>
+                <span class="service-price">750 грн</span>
+            </div>
+            <div class="pricelist-item">
+                <p class="service-name">Експрес педикюр + покриття гель лаком</p>
+                <span class="service-price">800 грн</span>
+            </div>
+        </div>
+
+        <div class="pricelist-category">
+            <h3>ДИЗАЙНИ</h3>
+            <div class="pricelist-item">
+                <p class="service-name">1-2 пальці</p>
+                <span class="service-price">+50 грн</span>
+            </div>
+            <div class="pricelist-item">
+                <p class="service-name">Френч / лунки</p>
+                <span class="service-price">+100 грн</span>
+            </div>
+            <div class="pricelist-item">
+                <p class="service-name">Френч+дизайн</p>
+                <span class="service-price">+150 грн</span>
+            </div>
+            <div class="pricelist-item">
+                <p class="service-name">Викладний френч</p>
+                <span class="service-price">+200-250 грн</span>
+            </div>
+            <div class="pricelist-item">
+                <p class="service-name">Градієнт</p>
+                <span class="service-price">+100 грн</span>
+            </div>
+            <div class="pricelist-item">
+                <p class="service-name">Дизайн на всі пальчики (легкий)</p>
+                <span class="service-price">+100-150 грн</span>
+            </div>
+            <div class="pricelist-item">
+                <p class="service-name">Складні дизайни</p>
+                <span class="service-price">+200-300 грн</span>
+            </div>
+        </div>
+
+    </section>
+</main>
 
     <footer>
         <p>&copy; 2025 Nail Studio by Alina Pitsyna. Всі права захищено.</p>
     </footer>
+
+    <script>
+        const sections = document.querySelectorAll('section');
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        sections.forEach(section => {
+            observer.observe(section);
+        });
+    </script>
 
 </body>
 </html>
