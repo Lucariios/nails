@@ -3,11 +3,17 @@ body {
     font-family: 'Helvetica Neue', Arial, sans-serif;
     margin: 0;
     padding: 0 10px; /* Додаємо відступи для бічних смуг */
-    background-color: #ffffff;
+    background-color: #ffffff; /* Повертаємо білий фон */
     color: #000000;
     line-height: 1.6;
     position: relative;
     box-sizing: border-box;
+
+    background-image: linear-gradient(rgba(255, 255, 255, 0.85), rgba(255, 255, 255, 0.85)), url('images/fon2.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+
 }
 
 /* Золоті смуги по боках */
@@ -70,26 +76,28 @@ nav {
     align-items: center;
 }
 
-nav .logo a {
-    color: #000;
-    text-decoration: none;
-    font-size: 1.2em;
+.logo-center a {
+    font-family: 'Playfair Display', serif; /* Додаємо цей рядок */
+    font-size: 2.2em;
     font-weight: bold;
-    text-transform: uppercase;
+    color: #c5a47e;
+    text-decoration: none;
+    transition: color 0.3s ease;
 }
 
-nav ul {
+.logo-center a:hover {
+    color: #000;
+}
+
+.nav-links ul {
     list-style: none;
     display: flex;
     margin: 0;
     padding: 0;
+    gap: 30px;
 }
 
-nav ul li {
-    margin-left: 25px;
-}
-
-nav ul li a {
+.nav-links a {
     color: #000;
     text-decoration: none;
     font-size: 1em;
@@ -97,13 +105,16 @@ nav ul li a {
     transition: color 0.3s ease;
 }
 
-nav ul li a:hover {
-    color: #c5a47e; /* Золотий колір */
+.nav-links a:hover {
+    color: #c5a47e;
 }
 
 /* Hero Section */
 #hero {
-    background-color: #000;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('images/fon.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
     color: #fff;
     text-align: center;
     padding: 100px 20px;
@@ -112,22 +123,36 @@ nav ul li a:hover {
 #hero h1 {
     font-size: 3em;
     margin-bottom: 10px;
+    color: #c5a47e; /* Змінюємо колір на золотий */
 }
 
 #hero p {
     font-size: 1.2em;
     margin-bottom: 30px;
+    color: #c5a47e; /* Змінюємо колір на золотий */
+}
+
+.hero-logo {
+    max-width: 150px; /* Можете змінити цей розмір */
+    height: auto;
+    margin-bottom: 20px;
 }
 
 .cta-button {
-    background-color: #fff;
-    color: #000;
+    background-color: transparent; /* Прозорий фон */
+    color: #000; /* Чорний текст для кнопок на світлому фоні */
     padding: 12px 25px;
     text-decoration: none;
     text-transform: uppercase;
     font-weight: bold;
-    border: 2px solid #fff;
+    border: 2px solid #000; /* Чорна рамка */
     transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+}
+
+/* Спеціальний стиль для кнопки на темному фоні */
+#hero .cta-button {
+    color: #fff; /* Білий текст */
+    border-color: #fff; /* Біла рамка */
 }
 
 .cta-button:hover {
@@ -157,10 +182,31 @@ nav ul li a:hover {
     box-sizing: border-box;
     text-align: center;
     transition: border-color 0.3s;
+    position: relative; /* Необхідно для позиціонування псевдо-елемента */
+    z-index: 1;
+    overflow: hidden; /* Ховаємо псевдо-елемент, що виходить за межі */
+}
+
+.service-item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(197, 164, 126, 0.2); /* Напівпрозорий золотий */
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.4s ease-in-out;
+    z-index: -1;
 }
 
 .service-item:hover {
     border-color: #c5a47e;
+}
+
+.service-item:hover::before {
+    transform: scaleX(1);
 }
 
 .service-item h3 {
@@ -180,16 +226,26 @@ nav ul li a:hover {
     gap: 10px;
 }
 
-.portfolio-grid img {
-    width: 100%;
-    height: auto;
-    display: block;
+/* Додайте цей блок */
+.portfolio-grid .img-wrapper {
+    overflow: hidden;
     border: 1px solid #000;
-    transition: border-color 0.3s;
+    aspect-ratio: 1 / 1; /* Робить контейнер квадратним */
 }
 
-.portfolio-grid img:hover {
+.portfolio-grid img,
+.portfolio-grid video {
+    width: 100%;
+    height: 100%; /* Змушує зображення заповнити контейнер */
+    object-fit: cover; /* Масштабує зображення, зберігаючи пропорції, та обрізає зайве */
+    display: block;
+    transition: transform 0.4s ease, border-color 0.3s; /* Змінено */
+}
+
+.portfolio-grid img:hover,
+.portfolio-grid video:hover {
     border-color: #c5a47e;
+    transform: scale(1.1); /* Ефект наближення */
 }
 
 .portfolio-button-container,
@@ -202,6 +258,9 @@ nav ul li a:hover {
 #contact {
     background-color: #f4f4f4;
     text-align: center;
+    border: 1px solid #000; /* Додаємо тонку чорну рамку */
+    border-bottom: none; /* Прибираємо нижню рамку */
+    border-radius: 8px 8px 0 0; /* Заокруглюємо тільки верхні кути */
 }
 
 .contact-info p {
@@ -229,6 +288,100 @@ nav ul li a:hover {
 
 .map-container iframe {
     border: 1px solid #000;
+}
+
+/* Lightbox Modal Styles */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1002;
+    padding-top: 50px;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.9);
+}
+
+.modal-content {
+    position: relative;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 80%;
+    max-width: 800px;
+    height: 90%;
+}
+
+#media-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+
+#media-container img,
+#media-container video {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    display: block;
+}
+
+.close-cursor {
+    position: absolute;
+    top: 15px;
+    right: 35px;
+    color: #fff;
+    font-size: 40px;
+    font-weight: bold;
+    transition: 0.3s;
+    cursor: pointer;
+}
+
+.close-cursor:hover,
+.close-cursor:focus {
+    color: #bbb;
+    text-decoration: none;
+}
+
+.prev,
+.next {
+    cursor: pointer;
+    color: white;
+    font-weight: bold;
+    font-size: 30px;
+    transition: 0.3s;
+    user-select: none;
+    padding: 16px;
+}
+
+.prev {
+    margin-right: 20px;
+}
+
+.next {
+    margin-left: 20px;
+}
+
+.prev:hover,
+.next:hover {
+    color: #c5a47e;
+}
+
+/* Animation on Scroll */
+section {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+section.visible {
+    opacity: 1;
+    transform: translateY(0);
 }
 
 /* Footer */
