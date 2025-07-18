@@ -4,21 +4,30 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Портфоліо - Nail Studio by Alina Pitsyna</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Playfair+Display:wght@700&family=Raleway:wght@300;400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
     <header>
         <nav>
-            <div class="logo">
-                <a href="index.html">Nail Studio by Alina Pitsyna</a>
+            <div class="nav-links nav-left">
+                <ul>
+                    <li><a href="index.html#about">Про нас</a></li>
+                    <li><a href="index.html#services">Послуги</a></li>
+                </ul>
             </div>
-            <ul>
-                <li><a href="index.html#about">Про нас</a></li>
-                <li><a href="index.html#services">Послуги</a></li>
-                <li><a href="portfolio.html">Портфоліо</a></li>
-                <li><a href="index.html#contact">Контакти</a></li>
-            </ul>
+            <div class="logo-center">
+                <a href="index.html">AP</a>
+            </div>
+            <div class="nav-links nav-right">
+                <ul>
+                    <li><a href="portfolio.html">Портфоліо</a></li>
+                    <li><a href="index.html#contact">Контакти</a></li>
+                </ul>
+            </div>
         </nav>
     </header>
 
@@ -44,6 +53,21 @@
     <footer>
         <p>&copy; 2025 Nail Studio by Alina Pitsyna. Всі права захищено.</p>
     </footer>
+
+    <script>
+        const sections = document.querySelectorAll('section');
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        sections.forEach(section => {
+            observer.observe(section);
+        });
+    </script>
 
 </body>
 </html>
