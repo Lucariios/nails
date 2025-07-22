@@ -116,14 +116,8 @@
                 <p><strong>Instagram:</strong> <a href="https://www.instagram.com/alina_pitsyna/" target="_blank">@alina_pitsyna</a></p>
             </div>
 
-            <!-- Початок блоку з картою -->
+            <!-- карта -->
             <div class="map-container">
-                <!-- 
-                  ЗАМІНІТЬ ЦЕЙ IFRAME НА ВАШ КОД З GOOGLE MAPS
-                  1. Перейдіть на Google Maps та знайдіть свою адресу.
-                  2. Натисніть "Поділитися" -> "Вбудовування карт".
-                  3. Скопіюйте HTML-код і вставте його сюди.
-                -->
                 <iframe 
                     src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2541.838539299198!2d30.35981687653511!3d50.42811997158861!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40d4cc91a9134b77%3A0x44f7046213b8e9c9!2z0J_RgNC-0LvQsNC00L3QuNC5INC_0YDQvtCy0L7Qu9C-0LogMTDQsywg0JrQuNGX9CyLCAwMzE0Mg!5e0!3m2!1suk!2sua!4v1721035500000!5m2!1suk!2sua" 
                     width="50%" 
@@ -134,7 +128,6 @@
                     referrerpolicy="no-referrer-when-downgrade">
                 </iframe>
             </div>
-            <!-- Кінець блоку з картою -->
 
         </section>
     </main>
@@ -143,7 +136,7 @@
         <span class="close-cursor">&times;</span>
         <div class="modal-content">
             <a class="prev">&#10094;</a>
-            <!-- Універсальний контейнер для медіа -->
+            <!-- Універсальний контейнер -->
             <div id="media-container"></div>
             <a class="next">&#10095;</a>
         </div>
@@ -167,7 +160,7 @@
             observer.observe(section);
         });
 
-        /* --- Hover-to-play video logic --- */
+        /* відео логіка */
         const portfolioVideos = document.querySelectorAll('.portfolio-grid video');
         portfolioVideos.forEach(video => {
             video.parentElement.addEventListener('mouseenter', () => {
@@ -175,11 +168,11 @@
             });
             video.parentElement.addEventListener('mouseleave', () => {
                 video.pause();
-                video.currentTime = 0; // Повертає відео на початок
+                video.currentTime = 0;
             });
         });
 
-        /* --- Lightbox Logic (Upgraded for Video) --- */
+        /* --- Lightbox логіка */
         const modal = document.getElementById('lightbox-modal');
         const mediaContainer = document.getElementById('media-container');
         const portfolioItems = document.querySelectorAll('.portfolio-grid .img-wrapper > *'); // Вибираємо і img, і video
@@ -196,7 +189,7 @@
         });
 
         function showMedia(index) {
-            // Очищуємо контейнер
+
             mediaContainer.innerHTML = '';
             const currentMedia = mediaSources[index];
 
@@ -207,7 +200,7 @@
             } else if (currentMedia.type === 'video') {
                 const video = document.createElement('video');
                 video.src = currentMedia.src;
-                video.controls = true; // Додаємо елементи керування
+                video.controls = true;
                 video.autoplay = true;
                 video.loop = true;
                 mediaContainer.appendChild(video);
@@ -222,7 +215,7 @@
 
         function closeModal() {
             modal.style.display = 'none';
-            mediaContainer.innerHTML = ''; // Зупиняємо відео при закритті
+            mediaContainer.innerHTML = '';
         }
 
         function showNext() {
