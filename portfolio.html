@@ -49,17 +49,14 @@
         </section>
     </main>
 
-    <!-- Початок структури модального вікна -->
     <div id="lightbox-modal" class="modal">
         <span class="close-cursor">&times;</span>
         <div class="modal-content">
             <a class="prev">&#10094;</a>
-            <!-- Універсальний контейнер для медіа -->
             <div id="media-container"></div>
             <a class="next">&#10095;</a>
         </div>
     </div>
-    <!-- Кінець структури модального вікна -->
 
     <footer>
         <p>&copy; 2025 Nail Studio by Alina Pitsyna. Всі права захищено.</p>
@@ -80,7 +77,7 @@
             observer.observe(section);
         });
 
-        /* --- Логіка відтворення відео при наведенні --- */
+        /* Логіка відтворення відео при наведенні */
         const portfolioVideos = document.querySelectorAll('.portfolio-grid video');
         portfolioVideos.forEach(video => {
             video.parentElement.addEventListener('mouseenter', () => {
@@ -88,11 +85,11 @@
             });
             video.parentElement.addEventListener('mouseleave', () => {
                 video.pause();
-                video.currentTime = 0; // Повертає відео на початок
+                video.currentTime = 0;
             });
         });
 
-        /* --- Логіка лайтбоксу (для фото та відео) --- */
+        /* Логіка лайтбоксу */
         const modal = document.getElementById('lightbox-modal');
         const mediaContainer = document.getElementById('media-container');
         const portfolioItems = document.querySelectorAll('.portfolio-grid .img-wrapper > *');
