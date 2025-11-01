@@ -350,6 +350,11 @@ nav {
     display: block;
 }
 
+.about-button-container {
+    text-align: center;
+    margin-top: 24px;
+}
+
 .close-cursor {
     position: absolute;
     top: 15px;
@@ -445,5 +450,75 @@ footer p {
 
     #hero h1 {
         font-size: 2.2em;
+    }
+}
+
+/* Team page */
+.team-section { padding-top: 40px; }
+.team-card {
+    background: #fff;
+    border: 1px solid #000;
+    border-radius: 8px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+}
+.team-card--hero {
+    display: grid;
+    grid-template-columns: 1.1fr 1fr; /* більше фото */
+    align-items: stretch;
+}
+.team-card--all {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr; /* текст + широке фото */
+    align-items: stretch;
+}
+
+.team-photo { position: relative; }
+.team-photo img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+}
+.team-photo--wide img { object-fit: cover; }
+
+.team-content {
+    padding: 24px;
+}
+.team-content h3 {
+    margin-top: 0;
+    margin-bottom: 12px;
+    font-weight: 600;
+}
+.team-bullets {
+    margin: 12px 0 16px;
+    padding-left: 18px;
+}
+.team-bullets li { margin-bottom: 6px; }
+
+/* Двоє поруч */
+.team-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+}
+.team-grid .team-card {
+    grid-auto-rows: 1fr;
+    display: grid;
+    grid-template-rows: auto 1fr;
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+    .team-card--hero,
+    .team-card--all {
+        grid-template-columns: 1fr;
+    }
+}
+@media (max-width: 768px) {
+    .team-grid {
+        grid-template-columns: 1fr;
     }
 }
