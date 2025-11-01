@@ -33,7 +33,7 @@
     </header>
 
     <main>
-        <section id="full-portfolio">
+        <section id="full-portfolio" class="visible">
             <h2>Наші роботи</h2>
             <div class="portfolio-grid">
                 <div class="img-wrapper"><img src="images/l1 (1).jpg" alt="Приклад роботи 1"></div>
@@ -87,19 +87,19 @@
         document.querySelectorAll('.portfolio-grid img').forEach(i => i.loading = 'lazy');
         document.querySelectorAll('.portfolio-grid video').forEach(v => v.setAttribute('preload','metadata'));
 
-        // Анімація появи секцій при прокрутці
+        // Робимо секції видимими одразу (фолбек для мобільних)
         const sections = document.querySelectorAll('section');
-        const observer = new IntersectionObserver(entries => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                }
-            });
-        }, { threshold: 0.1 });
+        sections.forEach(s => s.classList.add('visible'));
 
-        sections.forEach(section => {
-            observer.observe(section);
-        });
+        // Опціонально: спостерігач для плавної анімації
+        if ('IntersectionObserver' in window) {
+            const io = new IntersectionObserver(entries => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) entry.target.classList.add('visible');
+                });
+            }, { threshold: 0.1 });
+            sections.forEach(s => io.observe(s));
+        }
 
         /* Логіка відтворення відео при наведенні */
         const portfolioVideos = document.querySelectorAll('.portfolio-grid video');
