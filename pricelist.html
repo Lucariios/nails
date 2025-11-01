@@ -76,6 +76,76 @@
             margin-bottom: 20px;
             font-size: 0.9em;
         }
+                .pricelist-switcher {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+
+        .switch-btn,
+        .switch-prev,
+        .switch-next {
+            background-color: #fff;
+            border: 1px solid #000;
+            color: #000;
+            padding: 10px 22px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .switch-btn.active {
+            background-color: #c5a47e;
+            color: #fff;
+            border-color: #c5a47e;
+        }
+
+        .switch-prev,
+        .switch-next {
+            border-radius: 50%;
+            padding: 10px 14px;
+            font-size: 1.2em;
+            line-height: 1;
+        }
+
+        .switch-prev:hover,
+        .switch-next:hover,
+        .switch-btn:hover {
+            border-color: #c5a47e;
+            color: #c5a47e;
+            background-color: #fff;
+        }
+
+        .switch-btn.active:hover {
+            color: #fff;
+            background-color: #c5a47e;
+        }
+
+        .pricelist-panel {
+            display: none;
+        }
+
+        .pricelist-panel.active {
+            display: block;
+        }
+
+        .pricelist-note {
+            margin: 8px 0;
+            font-size: 0.95em;
+            font-style: italic;
+            color: #444;
+        }
+
+        .pricelist-highlight {
+            font-weight: bold;
+            text-transform: uppercase;
+            color: #c5a47e;
+            margin-top: 15px;
+        }
     </style>
 </head>
 <body>
@@ -104,119 +174,192 @@
     <section id="full-pricelist">
         <h2>Прайс-лист</h2>
 
-        <div class="pricelist-category">
-            <h3>Комплекс МАНІКЮР З ПОКРИТТЯМ</h3>
-            <p class="category-description">(В комплекс входить зняття, манікюр і однотонне покриття, укріплення за потреби). Дизайн +50-300грн.</p>
-            <div class="pricelist-item">
-                <p class="service-name">Комплекс</p>
-                <span class="service-price">750 грн</span>
+        <div class="pricelist-switcher" style="gap: 12px;">
+            <button class="switch-btn active" data-index="0">Манікюр &amp; педикюр</button>
+            <button class="switch-btn" data-index="1">Брови, вії &amp; макіяж</button>
+        </div>
+
+        <div class="pricelist-panel active" data-panel="0">
+            <div class="pricelist-category">
+                <h3>Комплекс манікюр з покриттям</h3>
+                <p class="category-description">(Зняття, манікюр і однотонне покриття, укріплення за потреби). Дизайн +50-300 грн.</p>
+                <div class="pricelist-item">
+                    <p class="service-name">Комплекс</p>
+                    <span class="service-price">750 грн</span>
+                </div>
+            </div>
+            <div class="pricelist-category">
+                <h3>Додатково</h3>
+                <div class="pricelist-item">
+                    <p class="service-name">Зняття матеріалу + манікюр</p>
+                    <span class="service-price">600 грн</span>
+                </div>
+                <div class="pricelist-item">
+                    <p class="service-name">Манікюр без покриття</p>
+                    <span class="service-price">500 грн</span>
+                </div>
+                <div class="pricelist-item">
+                    <p class="service-name">Чоловічий манікюр</p>
+                    <span class="service-price">600 грн</span>
+                </div>
+            </div>
+            <div class="pricelist-category">
+                <h3>Комплекс корекція нарощених нігтів*</h3>
+                <p class="category-description">(Зняття, манікюр, однотонне покриття, ремонт зламаних нігтів). Дизайн +50-300 грн.</p>
+                <div class="pricelist-item">
+                    <p class="service-name">S (1–2 довжина)</p>
+                    <span class="service-price">850 грн</span>
+                </div>
+                <div class="pricelist-item">
+                    <p class="service-name">M (3–4 довжина)</p>
+                    <span class="service-price">950 грн</span>
+                </div>
+                <div class="pricelist-item">
+                    <p class="service-name">L (5–6 довжина)</p>
+                    <span class="service-price">1050 грн</span>
+                </div>
+            </div>
+            <div class="pricelist-category">
+                <h3>Комплекс нарощування нігтів*</h3>
+                <p class="category-description">(Зняття, манікюр, нарощування нігтів). Дизайн +50-300 грн.</p>
+                <div class="pricelist-item">
+                    <p class="service-name">S (1–2 довжина)</p>
+                    <span class="service-price">1000 грн</span>
+                </div>
+                <div class="pricelist-item">
+                    <p class="service-name">M (3–4 довжина)</p>
+                    <span class="service-price">1100 грн</span>
+                </div>
+                <div class="pricelist-item">
+                    <p class="service-name">L (5–6 довжина)</p>
+                    <span class="service-price">1300 грн</span>
+                </div>
+            </div>
+            <div class="pricelist-category">
+                <h3>Педикюр</h3>
+                <div class="pricelist-item">
+                    <p class="service-name">Педикюр (повна обробка)</p>
+                    <span class="service-price">850 грн</span>
+                </div>
+                <div class="pricelist-item">
+                    <p class="service-name">Педикюр (повна обробка) + покриття</p>
+                    <span class="service-price">900 грн</span>
+                </div>
+                <div class="pricelist-item">
+                    <p class="service-name">Експрес педикюр (тільки пальці)</p>
+                    <span class="service-price">700 грн</span>
+                </div>
+                <div class="pricelist-item">
+                    <p class="service-name">Експрес педикюр + покриття лаком</p>
+                    <span class="service-price">750 грн</span>
+                </div>
+                <div class="pricelist-item">
+                    <p class="service-name">Експрес педикюр + покриття гель-лаком</p>
+                    <span class="service-price">800 грн</span>
+                </div>
+            </div>
+            <div class="pricelist-category">
+                <h3>Дизайни</h3>
+                <div class="pricelist-item">
+                    <p class="service-name">1–2 пальці</p>
+                    <span class="service-price">+50 грн</span>
+                </div>
+                <div class="pricelist-item">
+                    <p class="service-name">Френч / лунки</p>
+                    <span class="service-price">+100 грн</span>
+                </div>
+                <div class="pricelist-item">
+                    <p class="service-name">Френч + дизайн</p>
+                    <span class="service-price">+150 грн</span>
+                </div>
+                <div class="pricelist-item">
+                    <p class="service-name">Викладний френч</p>
+                    <span class="service-price">+200–250 грн</span>
+                </div>
+                <div class="pricelist-item">
+                    <p class="service-name">Градієнт</p>
+                    <span class="service-price">+100 грн</span>
+                </div>
+                <div class="pricelist-item">
+                    <p class="service-name">Дизайн на всі пальчики (легкий)</p>
+                    <span class="service-price">+100–150 грн</span>
+                </div>
+                <div class="pricelist-item">
+                    <p class="service-name">Складні дизайни</p>
+                    <span class="service-price">+200–300 грн</span>
+                </div>
             </div>
         </div>
 
-        <div class="pricelist-category">
-            <h3>ДОДАТКОВО</h3>
-            <div class="pricelist-item">
-                <p class="service-name">Зняття матеріалу + манікюр</p>
-                <span class="service-price">600 грн</span>
+        <div class="pricelist-panel" data-panel="1">
+            <div class="pricelist-category">
+                <h3>Брови та вії</h3>
+                <div class="pricelist-item">
+                    <p class="service-name">Корекція + фарбування брів</p>
+                    <span class="service-price">600 грн</span>
+                </div>
+                <div class="pricelist-item">
+                    <p class="service-name">Комплекс ламінування брів (ламінування, корекція, фарбування)</p>
+                    <span class="service-price">800 грн</span>
+                </div>
+                <div class="pricelist-item">
+                    <p class="service-name">Комплекс ламінування брів та вій</p>
+                    <span class="service-price">1350 грн</span>
+                </div>
+                <div class="pricelist-item">
+                    <p class="service-name">Корекція брів (віск, пінцет, трідінг)</p>
+                    <span class="service-price">350 грн</span>
+                </div>
+                <div class="pricelist-item">
+                    <p class="service-name">Фарбування брів (хна, фарба)</p>
+                    <span class="service-price">350 грн</span>
+                </div>
+                <div class="pricelist-item">
+                    <p class="service-name">Освітлення брів</p>
+                    <span class="service-price">+200 грн</span>
+                </div>
+                <div class="pricelist-item">
+                    <p class="service-name">Ламінування вій та фарбування</p>
+                    <span class="service-price">850 грн</span>
+                </div>
+                <div class="pricelist-item">
+                    <p class="service-name">Фарбування вій</p>
+                    <span class="service-price">300 грн</span>
+                </div>
+                <div class="pricelist-item">
+                    <p class="service-name">Депіляція воском обличчя</p>
+                    <span class="service-price">100–300 грн</span>
+                </div>
+                <p class="pricelist-note">• При комплексі ламінування / корекції брів епіляція воском вусиків у подарунок</p>
             </div>
-            <div class="pricelist-item">
-                <p class="service-name">Манікюр без покриття</p>
-                <span class="service-price">500 грн</span>
-            </div>
-            <div class="pricelist-item">
-                <p class="service-name">Чоловічий манікюр</p>
-                <span class="service-price">600 грн</span>
-            </div>
-        </div>
 
-        <div class="pricelist-category">
-            <h3>Комплекс КОРЕКЦІЯ НАРОЩЕНИХ НІГТІВ*</h3>
-            <p class="category-description">(В комплекс входить зняття, манікюр, однотонне покриття, ремонт зламаних нігтів). Дизайн +50-300грн.</p>
-            <div class="pricelist-item">
-                <p class="service-name">S (1–2 довжина)</p>
-                <span class="service-price">850 грн</span>
+            <div class="pricelist-category">
+                <h3>Макіяж та зачіски</h3>
+                <div class="pricelist-item">
+                    <p class="service-name">Денний макіяж</p>
+                    <span class="service-price">1200 грн</span>
+                </div>
+                <div class="pricelist-item">
+                    <p class="service-name">Вечірній макіяж</p>
+                    <span class="service-price">1600 грн</span>
+                </div>
+                <div class="pricelist-item">
+                    <p class="service-name">Весільний макіяж</p>
+                    <span class="service-price">1800 грн</span>
+                </div>
+                <div class="pricelist-item">
+                    <p class="service-name">Зачіски</p>
+                    <span class="service-price">1000–1500 грн</span>
+                </div>
+                <p class="pricelist-note">На комплекс макіяж + зачіска діє знижка 300 грн</p>
+                <div class="pricelist-item">
+                    <p class="service-name">Виїзд майстра</p>
+                    <span class="service-price">+600 грн</span>
+                </div>
             </div>
-            <div class="pricelist-item">
-                <p class="service-name">M (3–4 довжина)</p>
-                <span class="service-price">950 грн</span>
-            </div>
-            <div class="pricelist-item">
-                <p class="service-name">L (5–6 довжина)</p>
-                <span class="service-price">1050 грн</span>
-            </div>
-        </div>
 
-        <div class="pricelist-category">
-            <h3>Комплекс НАРОЩУВАННЯ НІГТІВ*</h3>
-            <p class="category-description">(В комплекс входить зняття, манікюр, нарощування нігтів. Дизайн +50-300грн)</p>
-            <div class="pricelist-item">
-                <p class="service-name">S (1–2 довжина)</p>
-                <span class="service-price">1000 грн</span>
-            </div>
-            <div class="pricelist-item">
-                <p class="service-name">M (3–4 довжина)</p>
-                <span class="service-price">1100 грн</span>
-            </div>
-            <div class="pricelist-item">
-                <p class="service-name">L (5–6 довжина)</p>
-                <span class="service-price">1300 грн</span>
-            </div>
-        </div>
-
-        <div class="pricelist-category">
-            <h3>Педикюр</h3>
-            <div class="pricelist-item">
-                <p class="service-name">Педикюр (повна обробка)</p>
-                <span class="service-price">850 грн</span>
-            </div>
-            <div class="pricelist-item">
-                <p class="service-name">Педикюр (повна обробка) + покриття</p>
-                <span class="service-price">900 грн</span>
-            </div>
-            <div class="pricelist-item">
-                <p class="service-name">Експрес педикюр (тільки пальці)</p>
-                <span class="service-price">700 грн</span>
-            </div>
-            <div class="pricelist-item">
-                <p class="service-name">Експрес педикюр + покриття лаком</p>
-                <span class="service-price">750 грн</span>
-            </div>
-            <div class="pricelist-item">
-                <p class="service-name">Експрес педикюр + покриття гель лаком</p>
-                <span class="service-price">800 грн</span>
-            </div>
-        </div>
-
-        <div class="pricelist-category">
-            <h3>ДИЗАЙНИ</h3>
-            <div class="pricelist-item">
-                <p class="service-name">1-2 пальці</p>
-                <span class="service-price">+50 грн</span>
-            </div>
-            <div class="pricelist-item">
-                <p class="service-name">Френч / лунки</p>
-                <span class="service-price">+100 грн</span>
-            </div>
-            <div class="pricelist-item">
-                <p class="service-name">Френч+дизайн</p>
-                <span class="service-price">+150 грн</span>
-            </div>
-            <div class="pricelist-item">
-                <p class="service-name">Викладний френч</p>
-                <span class="service-price">+200-250 грн</span>
-            </div>
-            <div class="pricelist-item">
-                <p class="service-name">Градієнт</p>
-                <span class="service-price">+100 грн</span>
-            </div>
-            <div class="pricelist-item">
-                <p class="service-name">Дизайн на всі пальчики (легкий)</p>
-                <span class="service-price">+100-150 грн</span>
-            </div>
-            <div class="pricelist-item">
-                <p class="service-name">Складні дизайни</p>
-                <span class="service-price">+200-300 грн</span>
-            </div>
+            <p class="pricelist-highlight">Знижка 100 грн на паралельні послуги: манікюр / педикюр + брови / вії</p>
+            <p class="pricelist-note">* Знижки не сумуються з іншими акціями</p>
         </div>
 
     </section>
@@ -236,9 +379,20 @@
             });
         }, { threshold: 0.1 });
 
-        sections.forEach(section => {
-            observer.observe(section);
-        });
+        sections.forEach(section => observer.observe(section));
+
+        const panels = Array.from(document.querySelectorAll('.pricelist-panel'));
+        const switchButtons = Array.from(document.querySelectorAll('.switch-btn'));
+        let currentPanelIndex = 0;
+
+        function showPanel(index) {
+            currentPanelIndex = (index + panels.length) % panels.length;
+            panels.forEach((panel, i) => panel.classList.toggle('active', i === currentPanelIndex));
+            switchButtons.forEach(btn => btn.classList.toggle('active', Number(btn.dataset.index) === currentPanelIndex));
+        }
+
+        switchButtons.forEach(btn => btn.addEventListener('click', () => showPanel(Number(btn.dataset.index))));
+        showPanel(0);
     </script>
 
 </body>
