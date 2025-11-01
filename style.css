@@ -230,7 +230,26 @@ nav {
 .portfolio-grid .img-wrapper {
     overflow: hidden;
     border: 1px solid #000;
-    aspect-ratio: 1 / 1; /* Робить контейнер квадратним */
+    aspect-ratio: 1 / 1;          /* сучасні браузери */
+    position: relative;
+}
+
+/* fallback для мобільних без aspect-ratio */
+@supports not (aspect-ratio: 1 / 1) {
+    .portfolio-grid .img-wrapper { position: relative; }
+    .portfolio-grid .img-wrapper::before {
+        content: "";
+        display: block;
+        padding-top: 100%;        /* квадратна висота */
+    }
+    .portfolio-grid .img-wrapper > img,
+    .portfolio-grid .img-wrapper > video {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
 }
 
 .portfolio-grid img,
