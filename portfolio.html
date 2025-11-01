@@ -83,6 +83,10 @@
     </footer>
 
     <script>
+        // Ліниве завантаження і попередній кадр для відео
+        document.querySelectorAll('.portfolio-grid img').forEach(i => i.loading = 'lazy');
+        document.querySelectorAll('.portfolio-grid video').forEach(v => v.setAttribute('preload','metadata'));
+
         // Анімація появи секцій при прокрутці
         const sections = document.querySelectorAll('section');
         const observer = new IntersectionObserver(entries => {
